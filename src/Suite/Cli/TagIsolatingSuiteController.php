@@ -62,7 +62,7 @@ final class TagIsolatingSuiteController implements Controller
         }
 
         if ([] === $this->registry->getSuitesConfigurations()) {
-            throw new SuiteIsolationException(sprintf('No suites left using isolation tags "%s".', $inputTags));
+            throw new SuiteIsolationException(sprintf('No suites left using isolation tags: %s.', $inputTags));
         }
     }
 

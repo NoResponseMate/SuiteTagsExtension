@@ -20,5 +20,10 @@
         "psr-4": {
             "NoResponseMate\\SuiteTagIsolationExtension\\": "src/"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\NoResponseMate\\SuiteTagIsolationExtension\\": "tests/"
+        }
     }
 }

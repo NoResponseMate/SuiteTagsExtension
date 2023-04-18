@@ -1,0 +1,5 @@
+default:
+    suites:
+        default:
+            contexts:
+                - Tests\NoResponseMate\SuiteTagIsolationExtension\Behat\Context\TestContext
