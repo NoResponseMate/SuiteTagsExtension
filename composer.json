@@ -1,6 +1,6 @@
 {
-    "name": "no-response-mate/suite-tag-isolation-extension",
-    "description": "Isolates suites run by their configured filter tags",
+    "name": "no-response-mate/suite-tags-extension",
+    "description": "Filters suites run by their configured tags",
     "license": "MIT",
     "authors": [
         {
@@ -13,17 +13,17 @@
         "behat/behat": "^3.4"
     },
     "require-dev": {
-        "friends-of-behat/test-context": "^1.2",
+        "symfony/process": "^4.4 || ^5.0 || ^6.0",
         "vimeo/psalm": "^4.1.1"
     },
     "autoload": {
         "psr-4": {
-            "NoResponseMate\\SuiteTagIsolationExtension\\": "src/"
+            "NoResponseMate\\SuiteTagsExtension\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\NoResponseMate\\SuiteTagIsolationExtension\\": "tests/"
+            "Tests\\NoResponseMate\\SuiteTagsExtension\\": "tests/"
         }
     }
 }
