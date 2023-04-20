@@ -1,13 +1,13 @@
-# Suite Tag Isolation Extension
+# Suite Tags Extension
 
-Adds the `--isolate` option to Behat CLI, which allows to run suites configured with specific tags.
+Adds the `--suite-tags` option to Behat CLI, which allows to run suites configured with specific tags.
 
 ## Usage
 
 1. Install it:
 
     ```bash
-    $ composer require no-response-mate/suite-tag-isolation-extension --dev
+    $ composer require no-response-mate/suite-tags-extension --dev
     ```
 
 2. Enable it in your Behat configuration:
@@ -17,14 +17,14 @@ Adds the `--isolate` option to Behat CLI, which allows to run suites configured 
     default:
         # ...
         extensions:
-            NoResponseMate\SuiteTagIsolationExtension: ~
+            NoResponseMate\SuiteTagsExtension: ~
     ```
 
 3. Set the option while running Behat:
 
     ```bash
-    $ vendor/bin/behat --isolate="domain"
-    $ vendor/bin/behat --isolate="~domain"
-    $ vendor/bin/behat --isolate="domain,ui"
-    $ vendor/bin/behat --isolate="domain&&ui"
+    $ vendor/bin/behat --suite-tags="domain"
+    $ vendor/bin/behat --suite-tags="~domain"
+    $ vendor/bin/behat --suite-tags="domain,ui"
+    $ vendor/bin/behat --suite-tags="domain&&ui"
     ```

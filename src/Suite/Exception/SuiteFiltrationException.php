@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace NoResponseMate\SuiteTagIsolationExtension\Suite\Exception;
+namespace NoResponseMate\SuiteTagsExtension\Suite\Exception;
 
 use Behat\Testwork\Exception\TestworkException;
 
-final class SuiteIsolationException extends \InvalidArgumentException implements TestworkException
+final class SuiteFiltrationException extends \InvalidArgumentException implements TestworkException
 {
     public function __construct(string $message, \Throwable $previousException = null)
     {

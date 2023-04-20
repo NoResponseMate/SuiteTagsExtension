@@ -1,4 +1,4 @@
-Feature: Isolating suites using multiple tags
+Feature: Filtering suites using multiple tags
     In order to only run suites configured with specific tags
     As a Behat User
     I want for suites to be limited to specified tags
@@ -8,7 +8,7 @@ Feature: Isolating suites using multiple tags
         """
         default:
             extensions:
-                NoResponseMate\SuiteTagIsolationExtension: ~
+                NoResponseMate\SuiteTagsExtension: ~
             suites:
                 first:
                     contexts:
@@ -76,47 +76,47 @@ Feature: Isolating suites using multiple tags
                 When I get the property
         """
 
-    Scenario: Passing a union of isolation tags runs only suites with those tags
-        When I run Behat with isolation on tags "@first&&@joined"
+    Scenario: Passing a union of suite tags runs only suites with those tags
+        When I run Behat with suite tags "@first&&@joined"
         Then it should pass
         And it should have run 1 scenario
         And its output should contain "property value: first"
 
-    Scenario: Passing a list of isolation tags runs all suites containing at least one of those tags
-        When I run Behat with isolation on tags "@first,@third"
+    Scenario: Passing a list of suite tags runs all suites containing at least one of those tags
+        When I run Behat with suite tags "@first,@third"
         Then it should pass
         And it should have run 2 scenarios
         And its output should contain "property value: first"
         And its output should contain "property value: third"
 
-    Scenario: Passing a union of negated tags runs suites that do not contain any of the those tags
-        When I run Behat with isolation on tags "~@disjointed&&~@second"
+    Scenario: Passing a union of negated suite tags runs suites that do not contain any of the those tags
+        When I run Behat with suite tags "~@disjointed&&~@second"
         Then it should pass
         And it should have run 1 scenario
         And its output should contain "property value: first"
 
-    Scenario: Passing a union of mixed tags runs suites that meet the criteria
-        When I run Behat with isolation on tags "@third&&~@joined"
+    Scenario: Passing a union of mixed suite tags runs suites that meet the criteria
+        When I run Behat with suite tags "@third&&~@joined"
         Then it should pass
         And it should have run 1 scenario
         And its output should contain "property value: third"
 
-    Scenario: Passing a union of a specific tag and its negation results in a failed run
-        When I run Behat with isolation on tags "@first&&~@first"
+    Scenario: Passing a union of a specific suite tag and its negation results in a failed run
+        When I run Behat with suite tags "@first&&~@first"
         Then it should fail
-        And its output should contain "No suites left using isolation tags: @first&&~@first."
+        And its output should contain "No suites left using suite tags: @first&&~@first."
 
-    Scenario: Passing a union of tags that does not match any suite tags results in a failed run
-        When I run Behat with isolation on tags "@first&&@disjointed"
+    Scenario: Passing a union of suite tags that does not match any suite results in a failed run
+        When I run Behat with suite tags "@first&&@disjointed"
         Then it should fail
-        And its output should contain "No suites left using isolation tags: @first&&@disjointed."
+        And its output should contain "No suites left using suite tags: @first&&@disjointed."
 
-    Scenario: Passing a union of negated tags that exclude all the suites results in a failed run
-        When I run Behat with isolation on tags "~@joined&&~@disjointed"
+    Scenario: Passing a union of negated suite tags that exclude all the suites results in a failed run
+        When I run Behat with suite tags "~@joined&&~@disjointed"
         Then it should fail
-        And its output should contain "No suites left using isolation tags: ~@joined&&~@disjointed."
+        And its output should contain "No suites left using suite tags: ~@joined&&~@disjointed."
 
-    Scenario: Passing a union of mixed tags that does not match any suite tags results in a failed run
-        When I run Behat with isolation on tags "@first&&~@joined"
+    Scenario: Passing a union of mixed suite tags that does not match any suite tags results in a failed run
+        When I run Behat with suite tags "@first&&~@joined"
         Then it should fail
-        And its output should contain "No suites left using isolation tags: @first&&~@joined."
+        And its output should contain "No suites left using suite tags: @first&&~@joined."

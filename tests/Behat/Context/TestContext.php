@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\NoResponseMate\SuiteTagIsolationExtension\Behat\Context;
+namespace Tests\NoResponseMate\SuiteTagsExtension\Behat\Context;
 
 use Behat\Behat\Context\Context;
 use Symfony\Component\Filesystem\Filesystem;
@@ -211,11 +211,11 @@ FEA
     }
 
     /**
-     * @When /^I run Behat with isolation on tags? "([^"]+)"$/
+     * @When /^I run Behat with suite tags? "([^"]+)"$/
      */
-    public function iRunBehatWithIsolationOnTag(string $tag): void
+    public function iRunBehatWithSuiteTag(string $tag): void
     {
-        $this->runBehat([sprintf('--isolate=%s', $tag)]);
+        $this->runBehat([sprintf('--suite-tags=%s', $tag)]);
     }
 
     /**

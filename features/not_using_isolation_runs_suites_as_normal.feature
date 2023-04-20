@@ -8,7 +8,7 @@ Feature: Not using isolation runs suites as normal
         """
         default:
             extensions:
-                NoResponseMate\SuiteTagIsolationExtension: ~
+                NoResponseMate\SuiteTagsExtension: ~
             suites:
                 first:
                     contexts:

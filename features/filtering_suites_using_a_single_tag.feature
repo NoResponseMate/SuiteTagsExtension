@@ -1,4 +1,4 @@
-Feature: Isolating suites using a single tag
+Feature: Filtering suites using a single tag
     In order to only run suites configured with a specific tag
     As a Behat User
     I want to run only suites with a specific tag
@@ -8,7 +8,7 @@ Feature: Isolating suites using a single tag
         """
         default:
             extensions:
-                NoResponseMate\SuiteTagIsolationExtension: ~
+                NoResponseMate\SuiteTagsExtension: ~
             suites:
                 first:
                     contexts:
@@ -60,26 +60,26 @@ Feature: Isolating suites using a single tag
                 When I get the property
         """
 
-    Scenario: Passing an isolation tag runs only suites with that tag
-        When I run Behat with isolation on tag "@first"
+    Scenario: Passing a suite tag runs only suites with that tag
+        When I run Behat with suite tag "@first"
         Then it should pass
         And it should have run 1 scenario
         And its output should contain "property value: first"
 
-    Scenario: Passing an isolation tag runs all suites containing that tag
-        When I run Behat with isolation on tag "@joined"
+    Scenario: Passing a suite tag runs all suites containing that tag
+        When I run Behat with suite tag "@joined"
         Then it should pass
         And it should have run 2 scenarios
         And its output should contain "property value: first"
         And its output should contain "property value: second"
 
-    Scenario: Passing a negated isolation tag runs all suites that do not contain that tag
-        When I run Behat with isolation on tag "~@first"
+    Scenario: Passing a negated suite tag runs all suites that do not contain that tag
+        When I run Behat with suite tag "~@first"
         Then it should pass
         And it should have run 1 scenario
         And its output should contain "property value: second"
 
-    Scenario: Passing an isolation tag with no suites with that tag fails
-        When I run Behat with isolation on tag "@third"
+    Scenario: Passing a suite tag with no suites with that tag fails
+        When I run Behat with suite tag "@third"
         Then it should fail
-        And its output should contain "No suites left using isolation tags: @third."
+        And its output should contain "No suites left using suite tags: @third."

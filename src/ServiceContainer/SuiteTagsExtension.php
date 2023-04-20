@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace NoResponseMate\SuiteTagIsolationExtension\ServiceContainer;
+namespace NoResponseMate\SuiteTagsExtension\ServiceContainer;
 
 use Behat\Testwork\Cli\ServiceContainer\CliExtension;
 use Behat\Testwork\ServiceContainer\Extension;
 use Behat\Testwork\ServiceContainer\ExtensionManager;
 use Behat\Testwork\Suite\ServiceContainer\SuiteExtension;
-use NoResponseMate\SuiteTagIsolationExtension\Suite\Cli\SuiteController;
-use NoResponseMate\SuiteTagIsolationExtension\Suite\Cli\TagIsolatingSuiteController;
-use NoResponseMate\SuiteTagIsolationExtension\Suite\MutableSuiteRegistry;
+use NoResponseMate\SuiteTagsExtension\Suite\Cli\SuiteController;
+use NoResponseMate\SuiteTagsExtension\Suite\Cli\FilteredTagsSuiteController;
+use NoResponseMate\SuiteTagsExtension\Suite\MutableSuiteRegistry;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
 
-final class SuiteTagIsolationExtension implements Extension
+final class SuiteTagsExtension implements Extension
 {
     public function process(ContainerBuilder $container): void
     {
@@ -24,7 +24,7 @@ final class SuiteTagIsolationExtension implements Extension
 
     public function getConfigKey(): string
     {
-        return 'nrm_suite_tag_isolation';
+        return 'nrm_suite_tags';
     }
 
     public function initialize(ExtensionManager $extensionManager): void
@@ -40,11 +40,11 @@ final class SuiteTagIsolationExtension implements Extension
         $this->overwriteSuiteRegistry($container);
         $this->overwriteSuiteController($container);
 
-        $controllerDefinition = new Definition(TagIsolatingSuiteController::class, [
+        $controllerDefinition = new Definition(FilteredTagsSuiteController::class, [
             new Reference(SuiteExtension::REGISTRY_ID),
         ]);
         $controllerDefinition->addTag(CliExtension::CONTROLLER_TAG, array('priority' => 1000));
-        $container->setDefinition(CliExtension::CONTROLLER_TAG . '.tag_isolating_suite', $controllerDefinition);
+        $container->setDefinition(CliExtension::CONTROLLER_TAG . '.filtered_tags_suite', $controllerDefinition);
     }
 
     private function overwriteSuiteRegistry(ContainerBuilder $container): void

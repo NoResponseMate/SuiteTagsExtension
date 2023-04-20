@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace NoResponseMate\SuiteTagIsolationExtension\Suite\Cli;
+namespace NoResponseMate\SuiteTagsExtension\Suite\Cli;
 
 use Behat\Gherkin\Filter\TagFilter;
 use Behat\Testwork\Cli\Controller;
 use Behat\Testwork\Suite\Cli\SuiteController;
-use NoResponseMate\SuiteTagIsolationExtension\Suite\Exception\SuiteIsolationException;
-use NoResponseMate\SuiteTagIsolationExtension\Suite\MutableSuiteRegistry;
+use NoResponseMate\SuiteTagsExtension\Suite\Exception\SuiteFiltrationException;
+use NoResponseMate\SuiteTagsExtension\Suite\MutableSuiteRegistry;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /** @see SuiteController */
-final class TagIsolatingSuiteController implements Controller
+final class FilteredTagsSuiteController implements Controller
 {
     private MutableSuiteRegistry $registry;
 
@@ -27,16 +27,16 @@ final class TagIsolatingSuiteController implements Controller
     public function configure(Command $command): void
     {
         $command->addOption(
-            '--isolate',
+            '--suite-tags',
             null,
             InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY,
-            'Only use suites with specific tags.',
+            'Filtrate used suites based on their configured tags.',
         );
     }
 
     public function execute(InputInterface $input, OutputInterface $output): ?int
     {
-        $tags = $input->getOption('isolate');
+        $tags = $input->getOption('suite-tags');
         if (empty($tags) || !isset($tags[0]) || empty(trim($tags[0]))) {
             return null;
         }
@@ -62,7 +62,7 @@ final class TagIsolatingSuiteController implements Controller
         }
 
         if ([] === $this->registry->getSuitesConfigurations()) {
-            throw new SuiteIsolationException(sprintf('No suites left using isolation tags: %s.', $inputTags));
+            throw new SuiteFiltrationException(sprintf('No suites left using suite tags: %s.', $inputTags));
         }
     }
 

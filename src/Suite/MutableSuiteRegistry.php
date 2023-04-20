@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NoResponseMate\SuiteTagIsolationExtension\Suite;
+namespace NoResponseMate\SuiteTagsExtension\Suite;
 
 use Behat\Testwork\Suite\Exception\SuiteConfigurationException;
 use Behat\Testwork\Suite\Exception\SuiteGenerationException;
