@@ -13,11 +13,11 @@ on:
 jobs:
     tests:
         runs-on: ubuntu-latest
-        name: "PHP ${{ matrix.php }}"
+        name: "Tests - PHP ${{ matrix.php }}"
         strategy:
             fail-fast: false
             matrix:
-                php: ["7.4", "8.0", "8.1"]
+                php: ["7.4", "8.0", "8.1", "8.2"]
 
         steps:
             -   uses: actions/checkout@v3
@@ -39,3 +39,36 @@ jobs:
 
             -   name: Run tests
                 run: vendor/bin/behat --strict -vvv --no-interaction
+
+    unstable:
+        runs-on: ubuntu-latest
+        name: "Unstable - PHP ${{ matrix.php }}, Behat ${{ matrix.behat }}"
+        needs: tests
+        strategy:
+            fail-fast: false
+            matrix:
+                php: ["8.2"]
+                behat: ["4.x-dev"]
+
+        steps:
+            -   uses: actions/checkout@v3
+
+            -   name: Setup PHP
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: "${{ matrix.php }}"
+                    coverage: none
+
+            -   name: Install dependencies
+                run: composer update --with="behat/behat:${{ matrix.behat }}"
+
+            -   name: Run analysis
+                run: composer validate --strict
+
+            -   name: Run static checks
+                run: vendor/bin/psalm --php-version="${{ matrix.php }}"
+                continue-on-error: true
+
+            -   name: Run tests
+                run: vendor/bin/behat --strict -vvv --no-interaction
+                continue-on-error: true
