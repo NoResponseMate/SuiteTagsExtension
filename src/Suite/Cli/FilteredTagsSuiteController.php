@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace NoResponseMate\SuiteTagsExtension\Suite\Cli;
+namespace SyliusLabs\SuiteTagsExtension\Suite\Cli;
 
 use Behat\Gherkin\Filter\TagFilter;
 use Behat\Testwork\Cli\Controller;
 use Behat\Testwork\Suite\Cli\SuiteController;
-use NoResponseMate\SuiteTagsExtension\Suite\Exception\SuiteFiltrationException;
-use NoResponseMate\SuiteTagsExtension\Suite\MutableSuiteRegistry;
+use SyliusLabs\SuiteTagsExtension\Suite\Exception\SuiteFiltrationException;
+use SyliusLabs\SuiteTagsExtension\Suite\MutableSuiteRegistry;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;

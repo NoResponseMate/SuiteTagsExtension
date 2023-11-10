@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace NoResponseMate\SuiteTagsExtension\Suite\Cli;
+namespace SyliusLabs\SuiteTagsExtension\Suite\Cli;
 
 use Behat\Testwork\Cli\Controller;
 use Behat\Testwork\Suite\Cli\SuiteController as BaseSuiteController;
 use Behat\Testwork\Suite\Exception\SuiteNotFoundException;
 use Behat\Testwork\Suite\SuiteRegistry;
 use Behat\Testwork\Suite\SuiteRepository;
-use NoResponseMate\SuiteTagsExtension\Suite\MutableSuiteRegistry;
+use SyliusLabs\SuiteTagsExtension\Suite\MutableSuiteRegistry;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;

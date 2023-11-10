@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace NoResponseMate\SuiteTagsExtension\ServiceContainer;
+namespace SyliusLabs\SuiteTagsExtension\ServiceContainer;
 
 use Behat\Testwork\Cli\ServiceContainer\CliExtension;
 use Behat\Testwork\ServiceContainer\Extension;
 use Behat\Testwork\ServiceContainer\ExtensionManager;
 use Behat\Testwork\Suite\ServiceContainer\SuiteExtension;
-use NoResponseMate\SuiteTagsExtension\Suite\Cli\SuiteController;
-use NoResponseMate\SuiteTagsExtension\Suite\Cli\FilteredTagsSuiteController;
-use NoResponseMate\SuiteTagsExtension\Suite\MutableSuiteRegistry;
+use SyliusLabs\SuiteTagsExtension\Suite\Cli\SuiteController;
+use SyliusLabs\SuiteTagsExtension\Suite\Cli\FilteredTagsSuiteController;
+use SyliusLabs\SuiteTagsExtension\Suite\MutableSuiteRegistry;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;

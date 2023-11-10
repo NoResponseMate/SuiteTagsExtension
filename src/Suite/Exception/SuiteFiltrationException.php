@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NoResponseMate\SuiteTagsExtension\Suite\Exception;
+namespace SyliusLabs\SuiteTagsExtension\Suite\Exception;
 
 use Behat\Testwork\Exception\TestworkException;
 

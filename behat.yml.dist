@@ -2,4 +2,4 @@ default:
     suites:
         default:
             contexts:
-                - Tests\NoResponseMate\SuiteTagsExtension\Behat\Context\TestContext
+                - Tests\SyliusLabs\SuiteTagsExtension\Behat\Context\TestContext

@@ -1,5 +1,5 @@
 {
-    "name": "no-response-mate/suite-tags-extension",
+    "name": "sylius-labs/suite-tags-extension",
     "description": "Filters suites run by their configured tags",
     "license": "MIT",
     "authors": [
@@ -18,12 +18,12 @@
     },
     "autoload": {
         "psr-4": {
-            "NoResponseMate\\SuiteTagsExtension\\": "src/"
+            "SyliusLabs\\SuiteTagsExtension\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\NoResponseMate\\SuiteTagsExtension\\": "tests/"
+            "Tests\\SyliusLabs\\SuiteTagsExtension\\": "tests/"
         }
     }
 }

@@ -7,7 +7,7 @@ Adds the `--suite-tags` option to Behat CLI, which allows to run suites configur
 1. Install it:
 
     ```bash
-    $ composer require no-response-mate/suite-tags-extension --dev
+    $ composer require sylius-labs/suite-tags-extension --dev
     ```
 
 2. Enable it in your Behat configuration:
@@ -17,7 +17,7 @@ Adds the `--suite-tags` option to Behat CLI, which allows to run suites configur
     default:
         # ...
         extensions:
-            NoResponseMate\SuiteTagsExtension: ~
+            SyliusLabs\SuiteTagsExtension: ~
     ```
 
 3. Set the option while running Behat:

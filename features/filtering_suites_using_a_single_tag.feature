@@ -8,7 +8,7 @@ Feature: Filtering suites using a single tag
         """
         default:
             extensions:
-                NoResponseMate\SuiteTagsExtension: ~
+                SyliusLabs\SuiteTagsExtension: ~
             suites:
                 first:
                     contexts:

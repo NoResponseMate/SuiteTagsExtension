@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\NoResponseMate\SuiteTagsExtension\Behat\Context;
+namespace Tests\SyliusLabs\SuiteTagsExtension\Behat\Context;
 
 use Behat\Behat\Context\Context;
 use Symfony\Component\Filesystem\Filesystem;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NoResponseMate\SuiteTagsExtension\Suite;
+namespace SyliusLabs\SuiteTagsExtension\Suite;
 
 use Behat\Testwork\Suite\SuiteRepository;
 
